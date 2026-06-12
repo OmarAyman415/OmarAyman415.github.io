@@ -1,0 +1,338 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const nav = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+const skills = [
+  {
+    group: "Core .NET Stack",
+    items: ["C#", "ASP.NET Core", "ASP.NET MVC", ".NET Framework", "Entity Framework / EF Core"],
+  },
+  {
+    group: "Languages",
+    items: ["Java", "JavaScript", "Python", "Dart", "PHP", "C++", "SQL"],
+  },
+  {
+    group: "Frameworks",
+    items: ["Spring Boot", "Spring Security", "Express.js", "Node.js", "React", "Flutter", "JavaFX"],
+  },
+  {
+    group: "Databases",
+    items: ["SQL Server", "PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+  },
+  {
+    group: "Tools",
+    items: ["Docker", "Apache Kafka", "Git & GitHub", "JPA / Hibernate", "Drift ORM", "WebSockets"],
+  },
+  {
+    group: "Concepts",
+    items: ["RESTful APIs", "Microservices", "OOP & SOLID", "Design Patterns", "DSA", "JWT Auth", "MVC"],
+  },
+];
+
+const projects = [
+  {
+    title: "Job Board REST API",
+    description:
+      "Fully documented REST API for job listings, applications, and employer/candidate profiles. JWT authentication with role-based authorization (Admin, Employer, Candidate) via ASP.NET Core Identity, repository pattern, and pagination for scalable data access.",
+    tags: ["C#", "ASP.NET Core", "EF Core", "SQL Server", "JWT"],
+    featured: true,
+  },
+  {
+    title: "Instagram Clone",
+    description:
+      "Full-featured photo and video sharing platform with private messaging and user authentication. Built with ASP.NET MVC and Entity Framework on SQL Server, with a responsive Bootstrap frontend.",
+    tags: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "Bootstrap"],
+    repo: "https://github.com/OmarAyman415/Instagram",
+    featured: true,
+  },
+  {
+    title: "E-Commerce REST API",
+    description:
+      "Full REST API backend handling products, carts, and orders with Spring Data JPA and role-based access control via Spring Security — comparable in design to an ASP.NET Core Web API with EF Core.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "JPA / Hibernate"],
+    repo: "https://github.com/OmarAyman415/shop",
+    featured: true,
+  },
+  {
+    title: "Microservices Architecture App",
+    description:
+      "Distributed system with async inter-service communication via Apache Kafka, fully containerized with Docker for consistent local and production environments.",
+    tags: ["Node.js", "Express.js", "Apache Kafka", "Docker"],
+    repo: "https://github.com/OmarAyman415/MicroservicesKafkaDocker",
+  },
+  {
+    title: "Real-Time Chat Application",
+    description:
+      "Secure real-time messaging using WebSockets with JWT and Spring Security authentication. The architecture mirrors ASP.NET Core + SignalR patterns and is easily portable to the .NET stack.",
+    tags: ["Java", "Spring Boot", "WebSockets", "JWT", "Spring Security"],
+  },
+  {
+    title: "Lift Tracker",
+    description:
+      "Cross-platform workout tracking app with an offline-first SQLite database via Drift ORM — built with a clean MVVM architecture in Flutter.",
+    tags: ["Flutter", "Dart", "SQLite", "Drift ORM"],
+  },
+  {
+    title: "Stereo R-CNN 3D Object Detection",
+    description:
+      "LiDAR-free 3D object detection system for autonomous driving using stereo cameras, validated on the KITTI benchmark with competitive accuracy.",
+    tags: ["Python", "Deep Learning", "Computer Vision"],
+    repo: "https://github.com/OmarAyman415/Stereo-RCNN",
+  },
+  {
+    title: "Compiler Scanner",
+    description:
+      "Lexical scanner for a case-sensitive OOP language with a .NET-based UI — a deep dive into language processing concepts on the .NET platform.",
+    tags: ["C#", "ASP.NET", ".NET"],
+  },
+  {
+    title: "Fingerprint Recognition System",
+    description:
+      "ANN-based biometric identification system analyzing ridge endings and bifurcations for accurate fingerprint matching.",
+    tags: ["Python", "Neural Networks"],
+    repo: "https://github.com/OmarAyman415/Fingerprint-recognition",
+  },
+  {
+    title: "Course Management System",
+    description:
+      "Desktop MVC application for managing courses, students, and assignments with a JavaFX interface.",
+    tags: ["Java", "JavaFX", "MVC"],
+    repo: "https://github.com/OmarAyman415/CourseManagment",
+  },
+];
+
+const email = "omarayman40404@gmail.com";
+const github = "https://github.com/OmarAyman415";
+const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
+---
+
+<Layout
+  title="Omar Ayman — Backend & .NET Engineer"
+  description="Portfolio of Omar Ayman Mohamed — backend engineer specializing in .NET, REST APIs, and microservices. Based in Cairo, Egypt."
+>
+  <!-- Background glow -->
+  <div class="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
+    <div
+      class="absolute -top-40 left-1/2 h-130 w-200 -translate-x-1/2 rounded-full bg-accent-500/12 blur-[120px]"
+    >
+    </div>
+    <div class="absolute top-1/2 -left-40 h-100 w-100 rounded-full bg-mint-400/6 blur-[120px]"></div>
+  </div>
+
+  <!-- Nav -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/80 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <a href="#top" class="font-display text-lg font-bold text-slate-100">
+        omar<span class="text-accent-400">.dev</span>
+      </a>
+      <ul class="hidden items-center gap-8 text-sm font-medium text-slate-400 sm:flex">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="transition-colors hover:text-accent-300">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href="/OmarAymanResume.pdf"
+        download
+        class="rounded-lg border border-accent-400/40 px-4 py-1.5 text-sm font-medium text-accent-300 transition hover:bg-accent-400/10"
+      >
+        Résumé
+      </a>
+    </nav>
+  </header>
+
+  <main id="top" class="relative mx-auto max-w-5xl px-6">
+    <!-- Hero -->
+    <section class="flex min-h-screen flex-col justify-center pt-24 pb-16">
+      <p class="reveal visible mb-4 font-mono text-sm tracking-widest text-accent-400 uppercase">
+        Cairo, Egypt
+      </p>
+      <h1
+        class="font-display max-w-3xl text-4xl leading-tight font-bold text-slate-50 sm:text-6xl"
+      >
+        Omar Ayman builds <span class="text-accent-400">backend systems</span> that ship.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Backend &amp; .NET engineer with hands-on experience building REST APIs and microservices —
+        from Entity Framework data layers to Kafka-driven distributed systems. Currently keeping the
+        infrastructure running at one of Egypt's largest telecoms.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="#projects"
+          class="rounded-lg bg-accent-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-accent-400"
+        >
+          View my work
+        </a>
+        <a
+          href="#contact"
+          class="rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-accent-400/50 hover:text-accent-300"
+        >
+          Get in touch
+        </a>
+        <div class="ml-2 flex items-center gap-4 text-slate-500">
+          <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors hover:text-accent-300">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"
+              />
+            </svg>
+          </a>
+          <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors hover:text-accent-300">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="reveal scroll-mt-24 py-20">
+      <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
+        <span class="text-accent-400">01.</span> About
+      </h2>
+      <div class="grid gap-10 md:grid-cols-5">
+        <div class="space-y-4 leading-relaxed text-slate-400 md:col-span-3">
+          <p>
+            I'm a Computer Science graduate from Helwan University with a focus on backend
+            engineering and the .NET ecosystem. I enjoy designing clean, well-structured APIs and
+            taking projects all the way from idea to production-ready.
+          </p>
+          <p>
+            My foundation is built on OOP, SOLID principles, and design patterns — and I've applied
+            it across stacks: ASP.NET Core, Spring Boot, Node.js, and Flutter. I'm comfortable with
+            relational and NoSQL databases, containerization with Docker, and event-driven
+            architectures with Kafka.
+          </p>
+          <p>
+            Today I work as an IT Operations Engineer at e&amp; Egypt, where reliability isn't a
+            buzzword — it's the job.
+          </p>
+        </div>
+        <div class="md:col-span-2">
+          <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-6">
+            <h3 class="font-display mb-4 text-sm font-semibold tracking-widest text-slate-300 uppercase">
+              Education
+            </h3>
+            <p class="font-medium text-slate-200">B.Sc. in Computer Science</p>
+            <p class="mt-1 text-sm text-slate-400">
+              Helwan University — Faculty of Computer &amp; Artificial Intelligence
+            </p>
+            <p class="mt-2 text-sm text-slate-500">2019 – 2023 · GPA 3.4 / 4.0</p>
+            <div class="mt-6 border-t border-white/5 pt-4">
+              <h3 class="font-display mb-2 text-sm font-semibold tracking-widest text-slate-300 uppercase">
+                Languages
+              </h3>
+              <p class="text-sm text-slate-400">Arabic — Native · English — Intermediate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="reveal scroll-mt-24 py-20">
+      <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
+        <span class="text-accent-400">02.</span> Skills
+      </h2>
+      <div class="stagger grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          skills.map(({ group, items }) => (
+            <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-6">
+              <h3 class="font-display mb-4 text-sm font-semibold tracking-widest text-accent-300 uppercase">
+                {group}
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <li class="rounded-full border border-white/8 bg-white/4 px-3 py-1 text-xs font-medium text-slate-300">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="reveal scroll-mt-24 py-20">
+      <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
+        <span class="text-accent-400">03.</span> Experience
+      </h2>
+      <div class="relative border-l border-white/10 pl-8">
+        <div class="absolute top-1 -left-[7px] h-3.5 w-3.5 rounded-full border-2 border-accent-400 bg-ink-950"></div>
+        <p class="font-mono text-sm text-accent-400">May 2025 — Present</p>
+        <h3 class="font-display mt-2 text-xl font-semibold text-slate-100">
+          IT Operations Engineer
+        </h3>
+        <p class="mt-1 text-slate-400">e&amp; Egypt (Etisalat Egypt) · Cairo, Egypt</p>
+        <p class="mt-4 max-w-2xl leading-relaxed text-slate-400">
+          Maintaining IT infrastructure, monitoring system performance, and ensuring high
+          availability of services at one of Egypt's largest telecom operators.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="reveal scroll-mt-24 py-20">
+      <h2 class="font-display mb-3 text-2xl font-bold text-slate-100 sm:text-3xl">
+        <span class="text-accent-400">04.</span> Projects
+      </h2>
+      <p class="mb-10 max-w-2xl text-slate-400">
+        A selection of things I've built — from production-style REST APIs to deep learning
+        research. Cards with a GitHub icon link to source code.
+      </p>
+      <div class="stagger grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="reveal scroll-mt-24 py-24 text-center">
+      <h2 class="font-display text-2xl font-bold text-slate-100 sm:text-3xl">
+        <span class="text-accent-400">05.</span> Get in touch
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl leading-relaxed text-slate-400">
+        I'm open to backend and .NET opportunities. Whether you have a question, a project, or just
+        want to say hi — my inbox is always open.
+      </p>
+      <a
+        href={`mailto:${email}`}
+        class="mt-8 inline-block rounded-lg bg-accent-500 px-8 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-accent-400"
+      >
+        Say hello
+      </a>
+      <p class="mt-6 text-sm text-slate-500">
+        {email} · +20 100 939 8538
+      </p>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 text-center text-sm text-slate-600">
+    <p>
+      Designed &amp; built by Omar Ayman ·
+      <a href={github} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent-300">GitHub</a>
+      ·
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-accent-300">LinkedIn</a>
+    </p>
+  </footer>
+</Layout>
