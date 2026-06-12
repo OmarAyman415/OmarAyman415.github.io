@@ -129,7 +129,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
 
   <!-- Nav -->
   <header class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/80 backdrop-blur-md">
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4">
       <a href="#top" class="font-display text-lg font-bold text-slate-100">
         omar<span class="text-accent-400">.dev</span>
       </a>
@@ -144,46 +144,107 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
           ))
         }
       </ul>
-      <a
-        href="/OmarAymanResume.pdf"
-        download
-        class="rounded-lg border border-accent-400/40 px-4 py-1.5 text-sm font-medium text-accent-300 transition hover:bg-accent-400/10"
-      >
-        Résumé
-      </a>
+      <div class="flex items-center gap-3">
+        <a
+          href="/OmarAymanResume.pdf"
+          download
+          class="rounded-lg border border-accent-400/40 px-4 py-1.5 text-sm font-medium text-accent-300 transition hover:bg-accent-400/10"
+        >
+          Résumé
+        </a>
+        <button
+          id="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="-mr-1 rounded-lg p-2 text-slate-300 transition hover:bg-white/5 sm:hidden"
+        >
+          <svg id="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="h-6 w-6" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden h-6 w-6" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      </div>
     </nav>
+    <div
+      id="mobile-menu"
+      class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out sm:hidden"
+    >
+      <div class="overflow-hidden">
+        <ul class="space-y-1 border-t border-white/5 px-5 py-4">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block rounded-lg px-3 py-2.5 text-base font-medium text-slate-300 transition hover:bg-white/5 hover:text-accent-300"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </header>
+
+  <script>
+    const toggle = document.getElementById("menu-toggle")!;
+    const menu = document.getElementById("mobile-menu")!;
+    const iconOpen = document.getElementById("icon-open")!;
+    const iconClose = document.getElementById("icon-close")!;
+
+    function setMenu(open: boolean) {
+      menu.classList.toggle("grid-rows-[1fr]", open);
+      menu.classList.toggle("grid-rows-[0fr]", !open);
+      iconOpen.classList.toggle("hidden", open);
+      iconClose.classList.toggle("hidden", !open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+
+    toggle.addEventListener("click", () => {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenu(false));
+    });
+  </script>
 
   <main id="top" class="relative mx-auto max-w-5xl px-6">
     <!-- Hero -->
-    <section class="flex min-h-screen flex-col justify-center pt-24 pb-16">
-      <p class="reveal visible mb-4 font-mono text-sm tracking-widest text-accent-400 uppercase">
+    <section class="flex min-h-svh flex-col justify-center pt-28 pb-16 sm:pt-24">
+      <p class="reveal visible mb-4 font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
         Cairo, Egypt
       </p>
       <h1
-        class="font-display max-w-3xl text-4xl leading-tight font-bold text-slate-50 sm:text-6xl"
+        class="font-display max-w-3xl text-[2.1rem] leading-[1.15] font-bold text-slate-50 sm:text-5xl md:text-6xl"
       >
         Omar Ayman builds <span class="text-accent-400">backend systems</span> that ship.
       </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:mt-6 sm:text-lg">
         Backend &amp; .NET engineer with hands-on experience building REST APIs and microservices —
         from Entity Framework data layers to Kafka-driven distributed systems. Currently keeping the
         infrastructure running at one of Egypt's largest telecoms.
       </p>
-      <div class="mt-10 flex flex-wrap items-center gap-4">
+      <div class="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
         <a
           href="#projects"
-          class="rounded-lg bg-accent-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-accent-400"
+          class="rounded-lg bg-accent-500 px-6 py-3 text-center text-sm font-semibold text-ink-950 transition hover:bg-accent-400"
         >
           View my work
         </a>
         <a
           href="#contact"
-          class="rounded-lg border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-accent-400/50 hover:text-accent-300"
+          class="rounded-lg border border-white/15 px-6 py-3 text-center text-sm font-semibold text-slate-200 transition hover:border-accent-400/50 hover:text-accent-300"
         >
           Get in touch
         </a>
-        <div class="ml-2 flex items-center gap-4 text-slate-500">
+        <div class="mt-2 flex items-center gap-5 text-slate-500 sm:mt-0 sm:ml-2 sm:gap-4">
           <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors hover:text-accent-300">
             <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
               <path
@@ -205,7 +266,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
     </section>
 
     <!-- About -->
-    <section id="about" class="reveal scroll-mt-24 py-20">
+    <section id="about" class="reveal scroll-mt-24 py-14 sm:py-20">
       <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
         <span class="text-accent-400">01.</span> About
       </h2>
@@ -228,7 +289,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
           </p>
         </div>
         <div class="md:col-span-2">
-          <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-6">
+          <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-5 sm:p-6">
             <h3 class="font-display mb-4 text-sm font-semibold tracking-widest text-slate-300 uppercase">
               Education
             </h3>
@@ -249,14 +310,14 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="reveal scroll-mt-24 py-20">
+    <section id="skills" class="reveal scroll-mt-24 py-14 sm:py-20">
       <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
         <span class="text-accent-400">02.</span> Skills
       </h2>
       <div class="stagger grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           skills.map(({ group, items }) => (
-            <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-6">
+            <div class="rounded-2xl border border-white/8 bg-ink-900/70 p-5 sm:p-6">
               <h3 class="font-display mb-4 text-sm font-semibold tracking-widest text-accent-300 uppercase">
                 {group}
               </h3>
@@ -274,7 +335,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="reveal scroll-mt-24 py-20">
+    <section id="experience" class="reveal scroll-mt-24 py-14 sm:py-20">
       <h2 class="font-display mb-8 text-2xl font-bold text-slate-100 sm:text-3xl">
         <span class="text-accent-400">03.</span> Experience
       </h2>
@@ -293,7 +354,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="reveal scroll-mt-24 py-20">
+    <section id="projects" class="reveal scroll-mt-24 py-14 sm:py-20">
       <h2 class="font-display mb-3 text-2xl font-bold text-slate-100 sm:text-3xl">
         <span class="text-accent-400">04.</span> Projects
       </h2>
@@ -307,7 +368,7 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="reveal scroll-mt-24 py-24 text-center">
+    <section id="contact" class="reveal scroll-mt-24 py-16 text-center sm:py-24">
       <h2 class="font-display text-2xl font-bold text-slate-100 sm:text-3xl">
         <span class="text-accent-400">05.</span> Get in touch
       </h2>
@@ -321,8 +382,10 @@ const linkedin = "https://linkedin.com/in/omar-ayman-723b401b4";
       >
         Say hello
       </a>
-      <p class="mt-6 text-sm text-slate-500">
-        {email} · +20 100 939 8538
+      <p class="mt-6 flex flex-col items-center gap-1 text-sm text-slate-500 sm:flex-row sm:justify-center sm:gap-2">
+        <span class="break-all">{email}</span>
+        <span class="hidden sm:inline">·</span>
+        <span>+20 100 939 8538</span>
       </p>
     </section>
   </main>
