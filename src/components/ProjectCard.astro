@@ -3,23 +3,31 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
+  category: string;
   repo?: string;
   featured?: boolean;
 }
 
-const { title, description, tags, repo, featured = false } = Astro.props;
+const { title, description, tags, category, repo, featured = false } = Astro.props;
 ---
 
 <article
-  class:list={[
-    "group relative flex flex-col gap-4 rounded-2xl border border-white/8 bg-ink-900/70 p-5 transition sm:p-6 duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-ink-800/70 hover:shadow-xl hover:shadow-accent-500/5",
-    featured && "md:col-span-2 lg:col-span-1",
-  ]}
+  data-category={category}
+  class="card group relative flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5 transition duration-300 sm:p-6 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10"
 >
-  <div class="flex items-start justify-between gap-4">
-    <h3 class="font-display text-lg font-semibold text-slate-100 group-hover:text-accent-300 transition-colors">
-      {title}
-    </h3>
+  <div class="flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+      </svg>
+    </span>
+    {
+      featured && (
+        <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
+          Featured
+        </span>
+      )
+    }
     {
       repo && (
         <a
@@ -27,7 +35,7 @@ const { title, description, tags, repo, featured = false } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`View ${title} on GitHub`}
-          class="-m-2 shrink-0 p-2 text-slate-500 transition-all duration-300 group-hover:-translate-y-0.5 hover:text-accent-300"
+          class="-m-2 ml-auto shrink-0 p-2 text-fg3 transition-all duration-300 group-hover:-translate-y-0.5 hover:text-accent"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
             <path
@@ -40,11 +48,14 @@ const { title, description, tags, repo, featured = false } = Astro.props;
       )
     }
   </div>
-  <p class="text-sm leading-relaxed text-slate-400">{description}</p>
+  <h3 class="font-display text-lg font-semibold text-fg transition-colors group-hover:text-accent">
+    {title}
+  </h3>
+  <p class="text-sm leading-relaxed text-fg2">{description}</p>
   <ul class="mt-auto flex flex-wrap gap-2">
     {
       tags.map((tag) => (
-        <li class="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-xs font-medium text-slate-300">
+        <li class="rounded-full border border-line bg-raised px-2.5 py-1 font-mono text-xs font-medium text-fg2">
           {tag}
         </li>
       ))
