@@ -5,3 +5,6 @@ dist/
 
 # source copy of the résumé lives in public/
 /OmarAymanResume.pdf
+
+# local Claude Code settings
+.claude/
