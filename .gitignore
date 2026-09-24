@@ -2,7 +2,7 @@ node_modules/
 dist/
 .astro/
 .DS_Store
-
+graphify-out/
 # source copy of the résumé lives in public/
 /OmarAymanResume.pdf
 
