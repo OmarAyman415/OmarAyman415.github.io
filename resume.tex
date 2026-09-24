@@ -1,0 +1,161 @@
+%% Omar Ayman Mohamed — CV (.NET focused)
+%% ATS-friendly, paste into Overleaf and compile with pdfLaTeX
+
+\documentclass[10pt, letterpaper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=0.55in, bottom=0.55in, left=0.75in, right=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+% ── Hyperlink styling ─────────────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+% ── Section heading style ─────────────────────────────────────────────────────
+\titleformat{\section}
+  {\normalsize\bfseries\uppercase}
+  {}{0em}{}
+  [\titlerule]
+\titlespacing{\section}{2pt}{6pt}{3pt}
+
+% ── List settings ─────────────────────────────────────────────────────────────
+\setlist[itemize]{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt, leftmargin=1.5em}
+
+% ── No page numbers ───────────────────────────────────────────────────────────
+\pagestyle{empty}
+
+% ── Kill parskip ──────────────────────────────────────────────────────────────
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+% ── Helpers ───────────────────────────────────────────────────────────────────
+\newcommand{\cvproject}[2]{%
+  \textbf{#1} \textit{| #2}%
+}
+
+% ──────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+% ── NAME ──────────────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Omar Ayman Zaki} \\[2pt]
+  Cairo, Egypt \quad|\quad
+  +20 1009398538 \quad|\quad
+  \href{mailto:omarayman40404@gmail.com}{omarayman40404@gmail.com} \\[2pt]
+  \href{https://linkedin.com/in/omar-ayman-723b401b4}{linkedin.com/in/omar-ayman-723b401b4}
+  \quad|\quad
+  \href{https://github.com/OmarAyman415}{github.com/OmarAyman415}
+  \quad|\quad
+  \href{https://omarayman415.github.io/}{omarayman415.github.io}
+\end{center}
+
+\vspace{-4pt}
+
+% ── SUMMARY ───────────────────────────────────────────────────────────────────
+\section{Summary}
+
+I'm passionate about building backend systems that scale and perform. Across .NET, Java/Spring Boot, and Node.js stacks, I've developed REST APIs, microservices, and distributed systems while applying OOP, SOLID principles, and modern DevOps practices to create production-ready solutions.
+
+% ── TECHNICAL SKILLS ──────────────────────────────────────────────────────────
+\section{Technical Skills}
+
+\textbf{Programming Languages:} C\#, Java, JavaScript, Python, Dart, PHP, C++, SQL \\
+\textbf{Web \& App Frameworks:} ASP.NET MVC, ASP.NET Core, Spring Boot, Spring Security, Express.js, Node.js, React, Flutter, JavaFX \\
+\textbf{Data \& Storage:} SQL Server, PostgreSQL, MySQL, MongoDB, SQLite, Entity Framework / EF Core \\
+\textbf{DevOps \& Infrastructure:} Docker, Apache Kafka, Git, GitHub, JPA, Hibernate, Drift ORM, WebSockets \\
+\textbf{Architecture \& Patterns:} RESTful APIs, Microservices, OOP, SOLID Principles, Design Patterns, DSA, JWT Auth, MVC, .NET Framework
+
+% ── WORK EXPERIENCE ───────────────────────────────────────────────────────────
+\section{Work Experience}
+
+\textbf{IT Operations Engineer} \hfill May 2025 -- Present \\
+e\& Egypt (Etisalat Egypt) \hfill Cairo, Egypt
+\begin{itemize}
+  \item Maintain IT infrastructure, monitor system performance, and ensure high availability of services at one of Egypt's largest telecoms.
+\end{itemize}
+
+% ── PROJECTS ──────────────────────────────────────────────────────────────────
+\section{Projects}
+
+\cvproject{Instagram Clone}{C\#, ASP.NET MVC, Entity Framework, Bootstrap, SQL Server}
+\begin{itemize}
+  \item Full-featured photo and video sharing platform with private messaging and user authentication.
+  \item Built with ASP.NET MVC and Entity Framework on a SQL Server backend, with a responsive Bootstrap frontend.
+\end{itemize}
+
+\cvproject{Compiler Scanner}{C\#, ASP.NET, .NET}
+\begin{itemize}
+  \item Lexical scanner for a case-sensitive OOP language with a .NET-based UI.
+  \item Demonstrates deep familiarity with the .NET platform and language processing concepts.
+\end{itemize}
+
+\cvproject{Real-Time Chat Application}{Java, Spring Boot, WebSockets, JWT, Spring Security}
+\begin{itemize}
+  \item Secure real-time messaging using WebSockets and JWT/Spring Security authentication.
+  \item Architecture mirrors ASP.NET Core + SignalR patterns; easily portable to the .NET stack.
+\end{itemize}
+
+\cvproject{E-Commerce REST API}{Java, Spring Boot, PostgreSQL, JPA/Hibernate}
+\begin{itemize}
+  \item Full REST API backend handling products, carts, and orders via JPA/Hibernate.
+  \item Comparable in design to an ASP.NET Core Web API project with Entity Framework Core.
+\end{itemize}
+
+\cvproject{Incident Report Tool}{Java, Spring Boot, REST API}
+\begin{itemize}
+  \item A lightweight Spring Boot tool for logging, managing, and exporting structured shift incident reports.
+  \item Features REST APIs, JSON file storage, CSV import, SMS notifications, and audit trails.
+\end{itemize}
+
+\cvproject{Microservices Architecture App}{Node.js, Express.js, Apache Kafka, Docker}
+\begin{itemize}
+  \item Async inter-service communication via Apache Kafka, fully containerized with Docker.
+\end{itemize}
+
+\cvproject{Lift Tracker}{Flutter, Dart, SQLite, Drift ORM}
+\begin{itemize}
+  \item Cross-platform workout tracking app with an offline-first SQLite database via Drift ORM.
+\end{itemize}
+
+\cvproject{Stereo R-CNN 3D Object Detection}{Python, Deep Learning, Computer Vision}
+\begin{itemize}
+  \item LiDAR-free 3D object detection system for autonomous driving using stereo cameras.
+  \item Validated on the KITTI benchmark with competitive accuracy.
+\end{itemize}
+
+\cvproject{Job Board REST API}{C\#, ASP.NET Core Web API, Entity Framework Core, SQL Server, JWT}
+\begin{itemize}
+  \item Built a fully documented REST API for job listings, applications, and employer/candidate profiles.
+  \item Implemented JWT-based authentication with role-based authorization (Admin, Employer, Candidate) using ASP.NET Core Identity.
+  \item Used EF Core with SQL Server, repository pattern, and pagination for scalable data access.
+\end{itemize}
+
+\cvproject{Fingerprint Recognition System}{Python, ANN}
+\begin{itemize}
+  \item ANN-based biometric identification analyzing ridge endings and bifurcations.
+\end{itemize}
+
+\cvproject{Course Management System}{Java, JavaFX}
+\begin{itemize}
+  \item Desktop MVC app for managing courses, students, and assignments.
+\end{itemize}
+
+% ── EDUCATION ─────────────────────────────────────────────────────────────────
+\section{Education}
+
+\textbf{Bachelor of Science in Computer Science} \hfill Aug 2019 -- Jun 2023 \\
+Helwan University, Faculty of Computer and Artificial Intelligence \hfill GPA: 3.4 / 4.0
+
+% ── LANGUAGES ─────────────────────────────────────────────────────────────────
+\section{Languages}
+\textbf{Arabic:} Native \quad|\quad \textbf{English:} Intermediate
+
+\end{document}
